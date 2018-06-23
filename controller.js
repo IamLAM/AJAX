@@ -1,21 +1,27 @@
 $(document).ready(function(){
                          
-      var consulta;
+      var c,c1;
              
                                                  
       $("#buscar").click(function(e){
 		  
 		  
-             consulta = $("#user").val();
+           //  c = $("#user").val();
                                       
              $("#resultado").delay(1000).queue(function(n) {      
                                            
                   $("#resultado").html('<img src="img/loader.gif" />');
                                            
-                        $.ajax({
+                      $.ajax({
                               type: "POST",
                               url: "info.php",
-                              data: "user="+consulta,
+                              // forma completa data: $("#formUser").serialize(),
+							  data: {
+								user:  $("#user").val(),
+								email:$("#email").val()
+								  
+							  },
+							  
                               dataType: "html",
                               error: function(){
                                     alert("error petición ajax");
